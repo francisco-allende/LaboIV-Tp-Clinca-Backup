@@ -1,3 +1,115 @@
+###   MATEMATICA FINANCIERA   ###
+
+Es una parte de la matematica que calcula como va cambiando con el tiempo el valor del dinero.
+
+- Concepto:
+	*Interes: es la compensacion que paga el deudor al acreedor por haber recibido cierta cantidad de dinero.
+	El interes tiene distintas variables que lo condicionan:
+	. I = f(P,t,i,s.c.)
+	I = interes
+	P = Valor del dinero prestado (monto)
+	t = tiempo que el deudor devuelva el prestamo
+	i = tasa de interes (tasa de referencia que acuerdan el deudor y el acreedor, se calcula cuanto debe pagar el deudor cada $100 en concepto de interes al transcurrir cierta cantidad de tiempo. Por ejemplo una tasa de interes por 18% anual indica que cada año cada $100 va a pagar $18)
+	s.c. = sistema de capitalizacion. Es el metodo con el cual se calcula el interes:
+	. Simple: el interes generado en cada periodo se va apartando.
+	. Compuesto: el interes generado se agrega al capital inicial, en el segundo periodo se agrega al capital acumulado generando un interes mas elevado y asi sucesivamente.
+	Ej: Sistema de capitalizacion simple: Una persona presta a otra 145000, con capitalizacion simple, pactando una tasa de interes del 18.3% bimestral, por un plazo de 175 dias.
+	$100 ............ $ 18,30
+	$145.000 ........ x = ($145.000 * $18,30) / $100 = $26.535 => Por bimestre
+	
+	1 bimestre ...... $ 26.535
+	175 dias ........ Z = [(26.535 * 175) / 1 bimestre] * 1 bimestre/60 dias => I = $77.393,80
+	Expresion General  I = P * i * n
+	n = numero de periodos
+	
+	Si queremos calcular el monto que recibe el acreedor al  final va a ser:
+	F = P + I
+	F = P + P * i * n
+	F = P( 1 + i * n)
+
+	Ejemplo: Que tasa de interes anual se aplico a un prestamo con capitalizacion simple, si el acreedor recibio el 50% mas de lo que presto, luego de 416 dias?
+	i = [(F / P)-1] / n
+	i = [(1,5P / P) - 1]/416 dias * (1 año/360 dias) = 0,433 / año
+	i = 43,3% anual
+
+	
+	Ejemplo de Capitalizacion Compuesta:
+
+	0		1		2		3		4
+	0 ... P
+	1 ... P + I1 = P + P * i * 1 = P (1 + i)
+	2 ... P(1+i) + I2 = P(1+i) + P(1+i) * i * 1 = P(1+i) * (1+i) = P(1+i)e2
+	3 ... P(1+i) + I3 = P(1+i)e2 + P(1+i)e3 * i * 1 = P(1+i)e2 * (1+i) = P(1+i)e3
+	  ...
+	n ... P (1+i)n
+
+	Expresion General F = P(1 + i)n
+
+	A considerar al realizar calculos con capitalizacion compuesta:
+	*Es utilizada comercialmente (no se aclara), en cambio si es capitalizacion simple si hay que aclarar.
+	*La expresion de calculo es exponencial. El error se propaga rapidamente. Lo que obliga a no aproximar o redondear los datos. Utilizar todos los datos que admita la calculadora.
+	*El periodo de capitalizacion es el mes. El tiempo y la tasa de interes deben convertirse a esta unidad. Es importante fijar un periodo de capitalizacion.
+
+	Ejemplo: Que monto de dinero se coloco a plazo fijo hace 178 dias si hoy se retiraron $198200? La tasa aplicada fue 26,5% na(anual)
+	P = F/(1+i)^n = $198.200/(1+0,265/año * 1 año / 12 mes) 178 dias * 1 mes/30 dias
+	P = $174.107,80
+
+
+	* DESCUENTO: es una operacion comercial que consiste en el intercambio de un documento con vencimiento futuro por efectivo. El que entrega el documento recibe una actualizacion o descuento, en concepto de interes.
+	D = F - P
+	D = F - F/(1+i)n
+	D = F * [ 1 - (1 + i)^-n ]
+
+	Ejemplo: Cual fue el importe que recibio una persona que entrego un cheque de pago diferido, si al actualizarlo recibio un descuento de $12.700, a 139 dias del vencimiento y con una tasa de interes del 75% anual?.
+	P = F - D
+	P = D /[ 1 - (1 + i)^-n ] - D
+	P = 12.700/[ 1 - (1+0,75/12) - 139/30] - 12.700
+	P = $39.159,70
+	
+
+
+###   DIAGRAMAS DE FLUJO   ###
+
+Es una representacion grafica de una cantidad de dinero en un eje de tiempo, se elige una escala conveniente.
+
+Escala
+$ 10.000 = 1cm
+
+INGRESOS	    0   		1		   2		    3
+--------------------|-------------------|------------------|----------------|
+EGRESOS
+
+
+- Serie Uniforme: esta constituida por flujos monetarios constantes todos del mismo valor en forma ininterrumpida desde el primero al ultimo periodo aplicando siempre la misma tasa de interes.
+
+
+0    1      2      3      4				n-2    n-1     n   
+-----|------|------|------|------------------------------|------|------|------> t
+     A      A      A      A  ........................... A      A      A
+								       F
+					i
+
+F = A(1+i)n-1 + A(1+i)n-2 + A(1+i)n-3 + ... + A(1+i)2 + A(1+i)1 + A     1
+
+Multiplicamos miembro a miembro por (1+1)
+
+F(1+i) = (1+i) [A(1+i)n-1 + A(1+i)n-2 + A(1+i)n-3 + ... + A(1+i)2 + A(1+i)1 + A]
+F(1+i) = A(1+i)n + A(1+i)n-1 + A(1+i)n-2 + ... + A(1+i)3 + A(1+i)2 + A(1+i)    2
+Restamos miembro a miembro 2 - 1
+F(1+i) - F = A(1+i)n - A
+F * i = A[(1+i)n -1]
+
+Expresion final =>   F = A*[(1+i)n - 1] / i
+
+Ejemplo: que monto de dinero hay que depositar mensualmente a plazo fijo para reunir $1.200.000 en 5 años?. Considerar una tasa de interes del 12,8% anual.
+
+F = A*[(1+i)n - 1] / i
+A = F * i / (1+i)^n - 1
+
+A = 1.200.000 * 0,128/12 / (1 + 0,128/12)60 - 1
+A = $ 14.381
+
+
 ###   ANALISIS E INTERPRETACION DE ESTADOS CONTABLES   ###
 
 - Fuentes: informes que presentan las empresas cuando culminan un ejercicio economico. Los informes fundamentales son el Balance General y el Estado de Resultado. Hay otros que amplian la informacion, denominados notas o cuadros anexos:
